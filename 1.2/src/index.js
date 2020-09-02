@@ -17,12 +17,13 @@ const Part = (props) => {
   )
 }
 
-const Content = () => {
+const Content = (props) => {
   return (
     <div>
-      <p> <Part part={part1} number={exercises1} /> </p>
-      <p> <Part part={part2} number={exercises2} /> </p>
-      <p> <Part part={part3} number={exercises3} /> </p>
+    // <p> <Part part={props.part1} number={props.exercises1} /> </p> No need for p tag!
+      <Part part={props.part1} number={props.exercises1} /> 
+      <Part part={props.part2} number={props.exercises2} /> 
+      <Part part={props.part3} number={props.exercises3} /> 
     </div>
   )
 }
@@ -47,7 +48,15 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content />
+      // <Content /> How is Content component is supposed to know about parts and exercises without passing them as props? 
+      <Content 
+        part1={part1} 
+        part2={part2} 
+        part3={part3} 
+        exercises1={exercises1} 
+        exercises2={exercises2} 
+        exercises3={exercises3}
+      />
       <Total numbers={exercises1 + exercises2 + exercises3} />
     </div>
   )
