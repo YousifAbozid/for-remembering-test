@@ -7,25 +7,24 @@ const Button = ({onClick, text}) => (
   </button>
 )
 
+function getRandomInt(max) {
+  return (
+    Math.floor((Math.random() * (max-1)) + 0)
+  ) 
+}
+
 const App = (props) => {
-  const [selected, setSelected] = useState(0)
-  function getRandomInt(max) {
-    return (
-      Math.floor(Math.random() * max)
-    ) 
-  }
-  const randomNumber = getRandomInt(props.anecdotesLength)
-  
+  let [selected, setSelected] = useState(0)
+  let randomNumber = getRandomInt(props.anecdotesLength)
+  console.log( "selected", selected)
+  console.log( "randomNumber", randomNumber)
   return (
     <div>
       <p>{props.anecdotes[selected]}</p>
-      <Button onClick={setSelected(selected = randomNumber)} text="next anecdotes" />
+      <Button onClick={() => setSelected(selected = randomNumber)} text="next anecdotes" />
     </div>
   )
 }
-
-
-//console.log(max)
 
 const anecdotes = [
   'If it hurts, do it more often',
@@ -35,7 +34,6 @@ const anecdotes = [
   'Premature optimization is the root of all evil.',
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ]
-
 ReactDOM.render(
   <App anecdotes={anecdotes} anecdotesLength={anecdotes.length} />,
   document.getElementById('root')
