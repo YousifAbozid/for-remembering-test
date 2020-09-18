@@ -106,20 +106,16 @@ const App = () => {
           .update(person.id, changedNumber)
           .then(returnedPerson => {
             setPersons(persons.map(p => p.id !== person.id ? p : returnedPerson))
-            setMessage(`${person.name} number is changed now.`, true)
+            showMessage(`${person.name}'s number has changed now.`, true)
             setNewName('')
             setNewNumber('')
           })
           .catch(error => {
-            console.log('rejection works')
+            //console.log('rejection works')
             setPersons(persons.filter(p => p !== person))
-            setMessage(`Information of ${person.name} is already been deleted from the server.`, false) /* I don't know why this line of code doesn't work at all
-            when I'm trying to update a number of a person I already deleted from the other browser, it should give me an error in the console 
-            error 404 not found and I'm using .catch method to handle the rejection, every line works correctly but this line of code, it doesn't show me
-            the error message on the screen, and I don't know why, any help, please? */
+            showMessage(`Information of ${person.name} has already been removed from the server.`, false) 
             setNewName('')
             setNewNumber('')
-            console.log('rejection works too')
           })
     }
     } else {
@@ -148,7 +144,7 @@ const App = () => {
           })
           .catch(error => {
             setPersons(persons.filter(person => person.id !== id))
-            showMessage(`${person.name} has already been removed!`, false)
+            showMessage(`${person.name} has already been removed from the server.`, false)
           })
       )
     }
