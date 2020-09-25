@@ -62,10 +62,7 @@ app.post('/api/persons', (request, response) => {
   person.save().then(savedPerson => {
     response.json(savedPerson)
   })
-  .catch(error => {
-    //console.log(error)
-    response.status(400).json({ error: 'name already exist, change the name' })
-  })
+  .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (request, response, next) => {
@@ -95,7 +92,10 @@ const errorHandler = (error, request, response, next) => {
 
   if (error.name === 'CastError' && error.kind == 'ObjectId') {
     return response.status(400).send({ error: 'malformatted id' })
-  } 
+  }
+  if (error.name == 'ValidationError') {
+    return response.status(400).send({ error: error.message })
+  }
   next(error)
 }
 // handler of requests with result to errors
