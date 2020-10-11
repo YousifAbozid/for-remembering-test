@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "author": "Yousif Abozid",
+    "likes": 20
+}
