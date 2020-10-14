@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "my Gtithub",
+    "author": "Yousif Atbozid",
+    "url": "https://github.com/YousifAbozid",
+    "likes": 20
+}
