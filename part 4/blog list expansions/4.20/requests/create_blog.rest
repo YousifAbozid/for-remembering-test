@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "my fb",
+    "author": "Yousif Atbozid",
+    "url": "https://facebook.com/YousifAbozid",
+    "likes": 10,
+    "userId": "5f876484cafb16349cc2c3f1"
+}
