@@ -21,7 +21,7 @@ const App = () => {
           </div>
         </div>
       )}
-      {AnecdoteForm()}
+      <AnecdoteForm />
     </div>
   )
 }
